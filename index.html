@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shared Duty Roster Management System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+   <header class="main-header">
+    <div class="container header-container">
+
+        <div class="logo">
+            <h1>DutySync</h1>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#workflow">How It Works</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="login.html" class="btn-outline">Login</a></li>
+                <li><a href="register.html" class="btn-primary">Get Started</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h2>Smart & Fair Duty Rotation for Shared Living</h2>
+                <p>
+                    Automate daily responsibilities, eliminate confusion, 
+                    and ensure transparency in shared environments like 
+                    hostels, apartments, offices, and training centers.
+                </p>
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn-primary large-btn">Start Free</a>
+                    <a href="#features" class="btn-secondary large-btn">Explore Features</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>⚖ Fair Rotation</h3>
+                    <p>Smart round-robin logic ensures equal workload distribution.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🔄 Skip & Swap</h3>
+                    <p>Request skips or swap duties transparently with approval flow.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>📊 Performance Dashboard</h3>
+                    <p>Track completed, pending, skipped duties with analytics.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>🔐 Secure Access</h3>
+                    <p>Role-based authentication for admins and participants.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>📁 Activity Logs</h3>
+                    <p>Complete history tracking for full accountability.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>⚡ Automated Assignment</h3>
+                    <p>Generate duty rosters instantly with intelligent logic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="workflow-section">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+
+            <div class="workflow-steps">
+                <div class="step">
+                    <span>1</span>
+                    <h4>Create Participants</h4>
+                    <p>Add members and define duty categories.</p>
+                </div>
+
+                <div class="step">
+                    <span>2</span>
+                    <h4>Auto Assign Duties</h4>
+                    <p>Trigger automatic fair rotation system.</p>
+                </div>
+
+                <div class="step">
+                    <span>3</span>
+                    <h4>Track & Manage</h4>
+                    <p>Monitor completion, swaps, and performance dashboard.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose DutySync?</h2>
+            <p class="about-text">
+                Designed to eliminate conflicts, improve transparency, and simplify 
+                shared responsibility management with a clean and powerful interface.
+            </p>
+        </div>
+    </section>
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Make Responsibilities Fair?</h2>
+        </div>
+    </section>
+    <footer class="main-footer">
+<div id="footer-placeholder"></div>
+<script>
+  fetch('components/footer.html')
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById('footer-placeholder').innerHTML = data;
+    });
+</script>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

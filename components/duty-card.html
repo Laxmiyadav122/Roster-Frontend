@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duty-card</title>
+</head>
+<body>
+<div class="duty-item" data-id="{{id}}">
+    <div class="duty-info">
+        <strong>{{title}}</strong><br>
+        <small>{{date}}</small>
+    </div>
+    <div class="duty-actions">
+        <span class="status-badge {{statusClass}}">
+            {{statusText}}
+        </span>
+        {{buttonHTML}}
+    </div>
+</div>
+</body>
+</html>

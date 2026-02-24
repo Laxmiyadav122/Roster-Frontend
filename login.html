@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - DutySync</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <div class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="auth-header">
+                <h2>Welcome Back 👋</h2>
+                <p>Login to manage your duties efficiently</p>
+            </div>
+
+            <form id="loginForm">
+
+    <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email">
+        <small class="error-message"></small>
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter your password">
+        <small class="error-message"></small>
+    </div>
+
+    <div class="form-options">
+        <div class="remember">
+            <input type="checkbox" id="remember">
+            <label for="remember">Remember me</label>
+        </div>
+        <a href="#" class="forgot-link">Forgot Password?</a>
+    </div>
+
+    <button type="submit" class="btn-primary full-width">
+        Login
+    </button>
+
+</form>
+
+            <div class="auth-footer">
+                <p>
+                    Don’t have an account?
+                    <a href="register.html">Create Account</a>
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

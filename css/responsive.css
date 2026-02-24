@@ -1,0 +1,107 @@
+@media (max-width: 1024px) {
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content {
+        gap: 30px;
+    }
+
+    .hero-text h2 {
+        font-size: 34px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .nav-menu ul {
+        gap: 15px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-visual {
+        margin-top: 30px;
+    }
+
+    .hero-text h2 {
+        font-size: 28px;
+    }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .workflow-steps {
+        flex-direction: column;
+    }
+
+    .step {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .container {
+        width: 95%;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .hero-text h2 {
+        font-size: 24px;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-outline {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dashboard-preview {
+        height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: var(--bg-white);
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .nav-menu.active {
+        max-height: 400px;
+    }
+}
