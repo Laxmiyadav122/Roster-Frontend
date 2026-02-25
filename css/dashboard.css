@@ -130,18 +130,3 @@
     background: #e6f4ea;
     color: #31704f;
 }
-
-.btn-outline, .logout-btn {
-    padding: 6px 14px;
-    border: 1px solid #555;
-    border-radius: 6px;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn-outline:hover, .logout-btn:hover {
-    background: #555;
-    color: #fff;
-}
