@@ -1,125 +1,220 @@
 const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-    const token = localStorage.getItem("token");
+const swapRequests = JSON.parse(localStorage.getItem("swapRequests")) || [];
 
-    if (!token) {
-    alert("Please login first");
-    window.location.href = "login.html";
-    }
+console.log(swapRequests);
 
-    if (!currentUser) {
-        window.location.href = "login.html";
-    }
+const token = localStorage.getItem("token");
 
-    document.getElementById("welcomeUser").textContent =
-        "Welcome, " + currentUser.name;
+if (!token) {
+  alert("Please login first");
+  window.location.href = "login.html";
+}
 
-    let duties = JSON.parse(localStorage.getItem("duties")) || [];
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+if (!currentUser) {
+  window.location.href = "login.html";
+}
 
-    function logout() {
-        localStorage.removeItem("currentUser");
-        window.location.href = "login.html";
-    }
+document.getElementById("welcomeUser").textContent =
+  "Welcome, " + currentUser.name;
 
-    if (window.location.pathname.includes("admin-dashboard")) {
+let duties = JSON.parse(localStorage.getItem("duties")) || [];
+let users = JSON.parse(localStorage.getItem("users")) || [];
 
-        document.querySelector(".card:nth-child(1) p").textContent = users.length;
-        document.querySelector(".card:nth-child(2) p").textContent = duties.length;
-        document.querySelector(".card:nth-child(3) p").textContent =
-            duties.filter(d => d.status === "pending").length;
+function logout() {
+  localStorage.removeItem("currentUser");
+  window.location.href = "login.html";
+}
 
-        const dutyForm = document.getElementById("dutyForm");
+if (window.location.pathname.includes("admin-dashboard")) {
+  document.querySelector(".card:nth-child(1) p").textContent = users.length;
+  document.querySelector(".card:nth-child(2) p").textContent = duties.length;
+  document.querySelector(".card:nth-child(3) p").textContent = duties.filter(
+    (d) => d.status === "pending",
+  ).length;
 
-        dutyForm.addEventListener("submit", function(e) {
-            e.preventDefault();
+  const dutyForm = document.getElementById("dutyForm");
 
-            const title = document.getElementById("dutyTitle").value;
-            const date = document.getElementById("dutyDate").value;
+  dutyForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-            const newDuty = {
-                id: Date.now(),
-                title,
-                date,
-                status: "unassigned",
-                assignedTo: null
-            };
+    const title = document.getElementById("dutyTitle").value;
+    const date = document.getElementById("dutyDate").value;
 
-            duties.push(newDuty);
-            localStorage.setItem("duties", JSON.stringify(duties));
-            alert("Duty Created");
-            location.reload();
-        });
+    const newDuty = {
+      id: Date.now(),
+      title,
+      date,
+      status: "unassigned",
+      assignedTo: null,
+    };
 
-        const dutySelect = document.getElementById("dutySelect");
-        const userSelect = document.getElementById("userSelect");
+    duties.push(newDuty);
+    localStorage.setItem("duties", JSON.stringify(duties));
+    alert("Duty Created");
+    location.reload();
+  });
 
-        function loadData() {
-            dutySelect.innerHTML = duties
-                .filter(d => !d.assignedTo)
-                .map(d => `<option value="${d.id}">${d.title}</option>`)
-                .join("");
+  const dutySelect = document.getElementById("dutySelect");
+  const userSelect = document.getElementById("userSelect");
 
-            userSelect.innerHTML = users
-                .filter(u => u.role === "user")
-                .map(u => `<option value="${u.email}">${u.name}</option>`)
-                .join("");
-        }
+  function loadData() {
+    dutySelect.innerHTML = duties
+      .filter((d) => !d.assignedTo)
+      .map((d) => `<option value="${d.id}">${d.title}</option>`)
+      .join("");
 
-        loadData();
+    userSelect.innerHTML = users
+      .filter((u) => u.role === "user")
+      .map((u) => `<option value="${u.email}">${u.name}</option>`)
+      .join("");
+  }
 
-        document.getElementById("assignForm")
-            .addEventListener("submit", function(e) {
-                e.preventDefault();
+  loadData();
 
-                const dutyId = Number(dutySelect.value);
-                const email = userSelect.value;
+  document
+    .getElementById("assignForm")
+    .addEventListener("submit", function (e) {
+      e.preventDefault();
 
-                const duty = duties.find(d => d.id === dutyId);
-                duty.assignedTo = email;
-                duty.status = "pending";
+      const dutyId = Number(dutySelect.value);
+      const email = userSelect.value;
 
-                localStorage.setItem("duties", JSON.stringify(duties));
-                alert("Assigned");
-                location.reload();
-            });
-    }
+      const duty = duties.find((d) => d.id === dutyId);
+      duty.assignedTo = email;
+      duty.status = "pending";
 
-    if (window.location.pathname.includes("user-dashboard")) {
+      localStorage.setItem("duties", JSON.stringify(duties));
+      alert("Assigned");
+      location.reload();
+    });
+}
 
-        const userDuties = duties.filter(
-            d => d.assignedTo === currentUser.email
-        );
+if (window.location.pathname.includes("user-dashboard")) {
+  const userDuties = duties.filter((d) => d.assignedTo === currentUser.email);
 
-        document.querySelector(".card:nth-child(1) p").textContent =
-            userDuties.length;
+  document.querySelector(".card:nth-child(1) p").textContent =
+    userDuties.length;
 
-        document.querySelector(".card:nth-child(2) p").textContent =
-            userDuties.filter(d => d.status === "completed").length;
+  document.querySelector(".card:nth-child(2) p").textContent =
+    userDuties.filter((d) => d.status === "completed").length;
 
-        document.querySelector(".card:nth-child(3) p").textContent =
-            userDuties.filter(d => d.status === "pending").length;
+  document.querySelector(".card:nth-child(3) p").textContent =
+    userDuties.filter((d) => d.status === "pending").length;
 
-        const list = document.getElementById("userDutyList");
+  const list = document.getElementById("userDutyList");
 
-        list.innerHTML = userDuties.map(d => `
+  list.innerHTML = userDuties
+    .map(
+      (d) => `
             <div class="duty-item">
                 <strong>${d.title}</strong>
                 <span>${d.date}</span>
                 <span>${d.status}</span>
                 ${
-                    d.status === "pending"
+                  d.status === "pending"
                     ? `<button onclick="completeDuty(${d.id})">Complete</button>`
                     : ""
                 }
             </div>
-        `).join("");
-    }
+        `,
+    )
+    .join("");
+}
 
-    function completeDuty(id) {
-        const duty = duties.find(d => d.id === id);
-        duty.status = "completed";
-        localStorage.setItem("duties", JSON.stringify(duties));
-        location.reload();
-    }
+function completeDuty(id) {
+  const duty = duties.find((d) => d.id === id);
+  duty.status = "completed";
+  localStorage.setItem("duties", JSON.stringify(duties));
+  location.reload();
+}
 
+function showSection(sectionId) {
+  document.querySelectorAll(".section").forEach((section) => {
+    section.style.display = "none";
+  });
+
+  document.getElementById(sectionId).style.display = "block";
+
+  if (sectionId === "completed") {
+    loadCompletedDuties();
+  }
+}
+
+function loadCompletedDuties() {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const duties = JSON.parse(localStorage.getItem("duties")) || [];
+
+  const completed = duties.filter(
+    (d) => d.assignedTo === currentUser.email && d.status === "completed",
+  );
+
+  const completedList = document.getElementById("completedList");
+
+  completedList.innerHTML = completed
+    .map(
+      (d) => `
+    <div class="duty-item">
+      <strong>${d.title}</strong>
+      <span>${d.date}</span>
+      <span style="color:green;">Completed</span>
+    </div>
+  `,
+    )
+    .join("");
+}
+
+function requestSkip() {
+  const dutyId = document.getElementById("skipDutySelect").value;
+  const reason = document.getElementById("skipReason").value;
+
+  const skipRequests = JSON.parse(localStorage.getItem("skipRequests")) || [];
+
+  skipRequests.push({
+    dutyId,
+    reason,
+    date: new Date().toLocaleDateString(),
+  });
+
+  localStorage.setItem("skipRequests", JSON.stringify(skipRequests));
+
+  alert("Skip request sent!");
+  loadSkipHistory();
+}
+
+function loadSkipHistory() {
+  const skipRequests = JSON.parse(localStorage.getItem("skipRequests")) || [];
+
+  const historyDiv = document.getElementById("skipHistory");
+
+  historyDiv.innerHTML = skipRequests
+    .map(
+      (s) => `
+    <div>
+      <p>Reason: ${s.reason}</p>
+      <small>Date: ${s.date}</small>
+    </div>
+  `,
+    )
+    .join("");
+}
+
+function requestSwap() {
+  const dutyId = document.getElementById("swapDutySelect").value;
+  const reason = document.getElementById("swapReason").value;
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  const swapRequests = JSON.parse(localStorage.getItem("swapRequests")) || [];
+
+  swapRequests.push({
+    dutyId,
+    requestedBy: currentUser.email,
+    reason,
+    status: "pending",
+    date: new Date().toLocaleDateString(),
+  });
+
+  localStorage.setItem("swapRequests", JSON.stringify(swapRequests));
+
+  alert("Swap request sent to Admin!");
+}

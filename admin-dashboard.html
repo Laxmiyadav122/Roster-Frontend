@@ -11,11 +11,11 @@
     <aside class="sidebar">
       <h2>DutySync</h2>
       <ul>
-        <li onclick="showSection('overview')">Overview</li>
-        <li onclick="showSection('users')">Manage Users</li>
-        <li onclick="showSection('duties')">Manage Duties</li>
-        <li onclick="showSection('assignments')">Assignments</li>
-        <li onclick="showSection('reports')">Reports</li>
+        <li>Overview</li>
+        <li>Manage Users</li>
+        <li>Manage Duties</li>
+        <li>Assignments</li>
+        <li>Reports</li>
       </ul>
     </aside>
 
@@ -89,7 +89,6 @@
       .then(res => res.text())
       .then(data => document.getElementById("footer-placeholder").innerHTML = data);
   </script>
-  <script src="js/dashboard-auth.js"></script>
   <script src="js/dashboard.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/analytics.js"></script>

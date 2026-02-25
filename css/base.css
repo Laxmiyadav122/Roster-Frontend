@@ -542,6 +542,7 @@ form {
 #log:hover{
     background-color: rgb(92, 92, 235);
     color: white;
+    height: 80px;
 }
 
 #start{

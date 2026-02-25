@@ -46,6 +46,9 @@ if (loginForm) {
     }
   });
 }
+
+
+
 const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {

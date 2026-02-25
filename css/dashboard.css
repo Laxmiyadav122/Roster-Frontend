@@ -130,3 +130,41 @@
     background: #e6f4ea;
     color: #31704f;
 }
+
+#swapReason{
+    height: 50px;
+    width: 60vh;
+    font-size: 20px;
+}
+
+ #skipReason{
+    height: 50px;
+    width: 60vh;
+    font-size: 20px;
+}
+
+#ski{
+    height: 50px;
+    width: 120px;
+    font-size: 25px;  
+    background-color: blue;  
+    color: white;
+}
+
+#ski:hover{
+    background-color: rgb(80, 80, 237);
+    cursor: pointer;
+}
+
+#sp{
+    height: 50px;
+    width: 120px;
+    font-size: 25px;  
+    background-color: blue;  
+    color: white;
+}
+
+#sp:hover{
+    background-color: rgb(80, 80, 237);
+    cursor: pointer;
+}

@@ -11,10 +11,10 @@
       <aside class="sidebar">
         <h2>DutySync</h2>
         <ul>
-          <li><a href="#">My Duties</a></li>
-          <li><a href="#">Completed</a></li>
-          <li><a href="#">Request Skip</a></li>
-          <li><a href="#">Request Swap</a></li>
+          <li onclick="showSection('overview')">My Duties</li>
+          <li onclick="showSection('completed')">Completed</li>
+          <li onclick="showSection('skip')">Request Skip</li>
+          <li onclick="showSection('swap')">Request Swap</li>
         </ul>
       </aside>
 
@@ -43,9 +43,32 @@
             <p>2</p>
           </div>
         </div>
-        <div class="duty-list">
-          <h3>My Duties</h3>
-          <div id="userDutyList"></div>
+
+        <div class="content">
+          <div id="overview" class="section">
+            <h3>My Duties</h3>
+            <div id="userDutyList"></div>
+          </div>
+
+          <div id="completed" class="section" style="display: none">
+            <h3>Completed Duties</h3>
+            <div id="completedList"></div>
+          </div>
+
+          <div id="skip" class="section" style="display: none">
+            <h3>Request Skip</h3>
+            <p id="skipDutySelect"></p>
+            <input type="text" id="skipReason" placeholder="Reason for skip" />
+            <button onclick="requestSkip()" id="ski">Submit</button>
+            <div id="skipHistory"></div>
+          </div>
+
+          <div id="swap" class="section" style="display: none">
+            <h3>Request Swap</h3>
+            <p id="swapDutySelect"></p>
+            <input type="text" id="swapReason" placeholder="Reason for swap" />
+            <button onclick="requestSwap()" id="sp">Submit</button>
+          </div>
         </div>
       </main>
     </div>
@@ -58,7 +81,6 @@
         });
     </script>
 
-    <script src="js/dashboard-auth.js"></script>
     <script src="js/dashboard.js"></script>
   </body>
 </html>
